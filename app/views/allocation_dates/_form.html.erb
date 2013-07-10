@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "jquery-ui-1.8.7.custom" %>
+  <%= javascript_include_tag "jquery.min","jquery-ui.min" %>
+   <script>
+	$(function() {
+    $(".date_select").datepicker({
+      format: "mm/dd/yyyy",
+      autoclose: true
+    });
+	});
+	</script>
+<%= form_for @allocation_date, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%#= f.label :value, :class => 'control-label' %>
+    <div class="controls">
+      <div class=" date_select input-append date" id="order_date" data-date="<%=Time.now.strftime("%m/%d/%Y")%>" >
+        <%=text_field_tag "value",(@allocation_date.value.strftime("%m/%d/%Y") if @allocation_date.value), :class=>"input-small", :placeholder=>"Select Date", :id =>"allocation_date_value", :name=> "allocation_date[value]"%>  
+        <span class="add-on"><i class="icon-th" ></i></span>
+      </div>
+    </div>
+  </div>
+  <%=f.fields_for :res_allocations do |res|%>
+    <%=render "res_allocation_fields", :f => res%>
+  <%end%>
+  <div style="margin-left:50px 0px"><%= link_to_add_fields "Add", f, :res_allocations %></div>
+  <div class="form-actions">
+    <%= f.submit "Save", :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                allocation_dates_path, :class => 'btn' %>
+  </div>
+<% end %>

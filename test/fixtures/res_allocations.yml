@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 
+  project: 
+  resource: 
+  title: MyString
+  hours: 2013-05-02 14:31:01
+
+two:
+  date: 
+  project: 
+  resource: 
+  title: MyString
+  hours: 2013-05-02 14:31:01

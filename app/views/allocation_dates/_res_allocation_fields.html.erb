@@ -1,0 +1,22 @@
+ 
+   <table class="table table-striped table-bordered" id="search_fields" >
+    <tr>	 
+       <td>
+           <%= f.select :project_id, Project.all.map {|p| [p.title, p.id] }, {:include_blank => '- Select Project -'}, :required => true %>
+           <%#= text_field_tag :project_title,'', :autocomplete =>"on",  :placeholder => 'Projects'%>  
+           <%#=f.hidden_field :project_id%>     
+       </td>
+         <td>
+          
+           <%= f.select :resource_id, Resource.all.map {|r| [r.name, r.id] }, {:include_blank => '- Select Project -'}, :required => true %>
+           <%#= text_field_tag :resource_name,'', :autocomplete =>"on",  :placeholder => 'Resources'%>  
+           <%#=f.hidden_field :resource_id%>     
+        </td>
+        <td>
+				  <%= f.time_select :hours, :class => 'time_select' %>
+         </td>
+         <td>
+          <%= link_to_remove_fields "Remove", f %>
+         </td>
+     </tr> 
+  </table>
